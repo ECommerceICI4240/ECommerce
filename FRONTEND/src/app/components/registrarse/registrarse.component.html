@@ -1,0 +1,116 @@
+<div class="container">
+    <div class="starter-template">
+        <div class="row">
+            <div class="col-md-12 mt-5">
+                <h1>Registrar Usuario</h1>
+                <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+                    
+                    <div class="form-group">
+                        <label for="nombres">Nombres:</label>
+                        <input type="text" formControlName="nombres" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombres.errors }" />
+                        <div *ngIf="submitted && f.nombres.errors" class="invalid-feedback">
+                            <div *ngIf="f.nombres.errors.required">Por favor, ingrese sus Nombres</div>
+                        </div>
+                    </div> 
+
+                    <div class="form-group">
+                        <label for="apellidoP">Apellido Paterno:</label>
+                        <input type="text" formControlName="apellidoP" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellidoP.errors }"/>
+                        <div *ngIf="submitted && f.apellidoP.errors" class="invalid-feedback">
+                            <div *ngIf="f.apellidoP.errors.required">Por favor, ingrese su Apellido Paterno</div>
+                        </div>
+                    </div> 
+
+                    <div class="form-group">
+                        <label for="apellidoM">Apellido Materno:</label>
+                        <input type="text" formControlName="apellidoM" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellidoM.errors }"/>
+                        <div *ngIf="submitted && f.apellidoM.errors" class="invalid-feedback">
+                            <div *ngIf="f.apellidoM.errors.required">Por favor, ingrese su Apellido Materno</div>
+                        </div>
+                    </div> 
+
+                    <div class="form-group">
+                        <label for="rut">RUT:</label>
+                        <input type="text" formControlName="rut" class="form-control" placeholder="12345678-9" maxlength="10" pattern="^[0-9]{8}-[0-9kK]{1}$" [ngClass]="{ 'is-invalid': submitted && f.rut.errors }"/>
+                        <div *ngIf="submitted && f.rut.errors" class="invalid-feedback">
+                            <div *ngIf="f.rut.errors.required">Por favor, ingrese su RUT</div>
+                            Ingrese RUT en el formato 12345678-9
+                        </div>
+                    </div> 
+
+                    <div class="form-group">
+                        <label for="direccion">Dirección de Residencia:</label>
+                        <input type="text" formControlName="direccion" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.direccion.errors }"/>
+                        <div *ngIf="submitted && f.direccion.errors" class="invalid-feedback">
+                            <div *ngIf="f.direccion.errors.required">Por favor, ingrese su Dirección</div>
+                        </div>
+                    </div> 
+<!--
+
+                    <div class="form-group">
+                        <label  for="idRegion"> Región </label>
+                        <select (change)="onSelect($event.target.value)" class="form-control" formControlName="idRegion" >
+                            <option value="" selected disabled>Seleccionar Región</option>
+                            <option *ngFor="let region of regiones" value={{region.idRegion}}>{{region.nombreRegion}}</option>  
+                    
+                        </select>
+                        
+                   </div>
+-->
+                   <div class="form-group">
+                    <label  for="idRegion"> Región </label>
+                    <select  class="form-control" formControlName="idRegion" [ngClass]="{ 'is-invalid': submitted && f.idRegion.errors }">
+                        <option value="" selected disabled>Seleccionar Región</option>
+                        <option *ngFor="let region of regiones" value={{region.idRegion}}>{{region.nombreRegion}}</option>  
+                
+                    </select>
+                    <div *ngIf="submitted && f.idRegion.errors" class="invalid-feedback">
+                        <div *ngIf="f.idRegion.errors.required">Por favor, seleccione la Región</div>
+                    </div>
+               </div>
+
+                    <div class="form-group">
+                        <label for="idComuna">Comuna</label>
+                        <select  class="form-control" formControlName="idComuna" [ngClass]="{ 'is-invalid': submitted && f.idRegion.errors }">
+                            <option value="" selected disabled>Seleccionar Comuna</option>
+                            <option value="Prueba">Prueba</option>
+                        </select>
+                        <div *ngIf="submitted && f.idComuna.errors" class="invalid-feedback">
+                            <div *ngIf="f.idComuna.errors.required">Por favor, seleccione la Región</div>
+                        </div>
+                    </div> 
+
+                    <div class="form-group">
+                        <label for="correo">Correo Electrónico:</label>
+                        <input type="email" formControlName="correo" class="form-control" placeholder="Ejemplo@email.cl" [ngClass]="{ 'is-invalid': submitted && f.correo.errors }"/>
+                        <div *ngIf="submitted && f.correo.errors" class="invalid-feedback">
+                            <div *ngIf="f.correo.errors.required">Por favor, ingrese su Correo Electrónico.</div>
+                            <div *ngIf="f.correo.errors.email">ERROR: El Correo no coindice con el formato.</div>
+                        </div>
+                    </div> 
+
+                    <div class="form-group">
+                        <label for="contrasena">Contraseña:</label>
+                        <input type="password" formControlName="contrasena" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contrasena.errors }"/>
+                        <div *ngIf="submitted && f.contrasena.errors" class="invalid-feedback">
+                            <div *ngIf="f.contrasena.errors.required">Por favor, ingrese su Contraseña.</div>
+                        </div>
+                    </div> 
+
+                    <div class="form-group">
+                        <label for="contrasenaC">Confirmar Contraseña:</label>
+                        <input type="password" formControlName="contrasenaC" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contrasenaC.errors }"/>
+                        <div *ngIf="submitted && f.contrasenaC.errors" class="invalid-feedback">
+                            <div *ngIf="f.contrasenaC.errors.required">Por favor, confirme su Contraseña.</div>
+                            <div *ngIf="f.contrasenaC.errors.mustMatch">ERROR: Las Contraseñas deben coincidir.</div>
+                        </div>
+                    </div> 
+
+                    <div class="form-group">
+                        <button style="margin: 10px" class="btn btn-primary"> Crear Usuario </button>
+                  </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

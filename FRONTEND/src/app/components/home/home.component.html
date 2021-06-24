@@ -1,0 +1,17 @@
+<!--Se listan todos los productos-->
+<div class="col-md-4" *ngFor="let producto of productos">
+  <div class="card text-center">
+    <div class="card-header bg-dark text-white d-flex justity-content-between align-items-center">
+      {{producto.nombreProducto}}
+      <button class="btn btn-danger">
+        <i class="far fa-trash-alt"></i>
+      </button>
+    </div>
+    <img [src]=producto.imagenProducto class="card-img-top"/>
+    <div class="card-body">
+      <p>{{producto.precioProducto}}</p>
+     
+    </div>
+  </div>
+</div>
+

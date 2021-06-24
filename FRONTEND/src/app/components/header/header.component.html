@@ -1,0 +1,48 @@
+<div class="contenedor">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">E-Commerce</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!--ml-auto = margin-left auto-->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/IniciarSesion']" routerLinkActive="router-link-active">Iniciar Sesión <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"[routerLink]="['/Registrarse']" routerLinkActive="router-link-active">Registrarse</a>
+        </li>
+        <li>
+          <a class="carrito" [routerLink]="['#']" routerLinkActive="router-link-active" ><mat-icon>shopping_cart</mat-icon></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+<!--Solo es un menu con 2 cateoria mascotas y que productos se tienen (categoria)-->
+
+  <ul *ngFor= "let mascota of mascotas" id="listaPrincipal">
+    <li>
+      <a [routerLink]="['/mascotas/{{mascota.nombreMascota}}']" routerLinkActive="router-link-active" >
+        <button mat-button [matMenuTriggerFor]="mascotas">{{mascota.nombreMascota}}</button>
+      </a>
+
+      <mat-menu #mascotas="matMenu">
+        <ul *ngFor = "let categoria of categorias" id="listaSecundaria">
+          <li>
+            <a [routerLink]="['/mascotas/{{mascota.nombreMascota}}/{{categoria.nombreCategoria}}']" routerLinkActive="router-link-active" >
+              <button>{{categoria.nombreCategoria}}</button> 
+            </a>
+          </li>
+        </ul>
+     </mat-menu>
+      
+    </li>
+  </ul> 
+</div> 
+
+  <!--
+   
+  -->
