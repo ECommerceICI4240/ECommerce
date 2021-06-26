@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
 import {RegistrarseComponent} from './components/registrarse/registrarse.component';
 import { IniciarsesionComponent } from './components/iniciarsesion/iniciarsesion.component';
+import {CarritoComponent} from './components/carrito/carrito.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'}, //Para definir que por defecto se redireccione a home
@@ -10,6 +11,7 @@ const routes: Routes = [
   {path: 'home', component:HomeComponent},
   {path: 'Registrarse',component:RegistrarseComponent},
   {path: 'IniciarSesion',component:IniciarsesionComponent },
+  {path: 'Carrito',component:CarritoComponent }
 ];
 
 @NgModule({

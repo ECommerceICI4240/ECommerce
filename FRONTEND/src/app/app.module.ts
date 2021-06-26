@@ -27,6 +27,7 @@ import {MatIconModule} from '@angular/material/icon';
 
 //Boostrap
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CarritoComponent } from './components/carrito/carrito.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HeaderComponent,
     HomeComponent,
     IniciarsesionComponent,
-    RegistrarseComponent
+    RegistrarseComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,

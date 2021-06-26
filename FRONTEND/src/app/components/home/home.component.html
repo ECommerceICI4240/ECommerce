@@ -1,16 +1,36 @@
-<!--Se listan todos los productos-->
-<div class="col-md-4" *ngFor="let producto of productos">
+<!--Se listan todos los productos
+<div class="col-lg-6 col-md-2" *ngFor="let producto of productos">
   <div class="card text-center">
     <div class="card-header bg-dark text-white d-flex justity-content-between align-items-center">
-      {{producto.nombreProducto}}
-      <button class="btn btn-danger">
+      <button class="btn btn-danger" id="deleteProd">
         <i class="far fa-trash-alt"></i>
       </button>
+      {{producto.nombreProducto}}
     </div>
-    <img [src]=producto.imagenProducto class="card-img-top"/>
     <div class="card-body">
-      <p>{{producto.precioProducto}}</p>
-     
+      <p id="preciosProd">${{producto.precioProducto}}</p>
+    </div>
+  </div>
+</div>
+-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-4" *ngFor="let producto of productos">
+      <div class="card text-center">
+        <div class="card-header bg-dark text-white d-flex justity-content-between align-items-center">
+          <button class="btn btn-danger" id="deleteProd">
+            <i class="far fa-trash-alt"></i>
+          </button>
+          {{producto.nombreProducto}}
+        </div>
+      </div>
+      <img [src]=producto.imagenProducto class="card-img-top" id="imagenProd" />
+      <div class="card-body">
+        <div class="card-body">
+          <p id="preciosProd">${{producto.precioProducto}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
