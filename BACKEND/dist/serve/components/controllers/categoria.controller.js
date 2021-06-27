@@ -22,5 +22,13 @@ class CategoriaController {
             });
         });
     }
+    getCategoriaMascota(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let _idMascota = req.params.idMascota;
+            yield mysql_module_1.default.query('SELECT categoria.idCategoria, categoria.nombreCategoria FROM categoria JOIN mascotacategoria ON categoria.idCategoria = mascotacategoria.idCategoria WHERE mascotacategoria.idMascota = ?', _idMascota, (req1, resultados) => {
+                res.status(200).send(resultados);
+            });
+        });
+    }
 }
 exports.categoriaController = new CategoriaController();

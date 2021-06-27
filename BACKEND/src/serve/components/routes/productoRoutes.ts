@@ -9,7 +9,7 @@ class ProductoRouter{
     }
 
     config(): void{
-        this.router.get('/',productoController.getAllProductos);
+        this.router.get('/',productoController.getProductosMejorCalificados);
         this.router.get('/:id',productoController.getProductoById);
         this.router.post('/',productoController.createProducto);
     }

@@ -9,6 +9,17 @@ class MascotaController{
             res.status(200).send(resultados);
         });   
     }
+
+    
+    public async getProdDeMascCatg(req: Request,res: Response){
+        let _idMascota = req.params.idMascota;
+        let _idCategoria = req.params.idCategoria;
+        
+
+        await database.query('SELECT * FROM producto WHERE idMascota=? AND idCategoria=?',[_idMascota,_idCategoria],(req1:any,  resultados:any)=>{
+            res.status(200).send(resultados);
+        });
+    }
 }
 
 export const mascotaController = new MascotaController();

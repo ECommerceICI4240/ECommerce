@@ -28,46 +28,34 @@
     </div>
   </nav>
 
-
-  <!--Solo es un menu con 2 cateoria mascotas y que productos se tienen (categoria)
-    <ul *ngFor="let mascota of mascotas" id="listaPrincipal">
-      <li>
-        <a [routerLink]="['/mascotas/{{mascota.nombreMascota}}']" routerLinkActive="router-link-active">
-          <button mat-button [matMenuTriggerFor]="mascotas" id="diseñoMenu">{{mascota.nombreMascota}}</button>
-        </a>
-        <mat-menu #mascotas="matMenu">
-          <ul *ngFor="let categoria of categorias" id="listaSecundaria">
-            <li>
-              <a [routerLink]="['/mascotas/{{mascota.nombreMascota}}/{{categoria.nombreCategoria}}']"
-                routerLinkActive="router-link-active">
-                <button>{{categoria.nombreCategoria}}</button>
-              </a>
-            </li>
-          </ul>
-        </mat-menu>
-      </li>
-    </ul>
-</div>
--->
+  <!--MENU DE MASCOTAS DESPEGABLE-->
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup" > 
       <div class="navbar-nav">
-        <ul *ngFor="let mascota of mascotas" id="listaPrincipal">
+        <ul *ngFor="let mascota of mascotas; let iMas = index" id="listaPrincipal">
           <li>
             <a [routerLink]="['/mascotas/{{mascota.nombreMascota}}']" routerLinkActive="router-link-active">
               <button mat-button [matMenuTriggerFor]="mascotas" id="diseñoMenu"
                 class="navbar-toggler">{{mascota.nombreMascota}}</button>
             </a>
             <mat-menu #mascotas="matMenu">
-              <ul *ngFor="let categoria of categorias" id="listaSecundaria">
-                <li>
-                  <a [routerLink]="['/mascotas/{{mascota.nombreMascota}}/{{categoria.nombreCategoria}}']"
-                    routerLinkActive="router-link-active">
-                    <button id="diseñoMenuCategoria">{{categoria.nombreCategoria}}</button>
-                  </a>
-                </li>
-              </ul>
+              <div *ngFor="let categoriax of categorias; let iCat = index" id="listaSecundaria">
+                <!--
+                Al ser un doble for va a mostrar muchas las cateristicas suyas y las demas mascotas, por lo tanto, solo se
+                seleccionan para mostrar las que estan en la misma posicion que en el arreglo de mascotas
+                -->
+                <ng-template [ngIf]="iMas == iCat">
+                  <div *ngFor = "let categoria of categoriax">
+                    <p class="categoria">
+                      <a id="diseñoMenuCategoria" [routerLink]="['/mascotas',mascota.idMascota,categoria.idCategoria]" routerLinkActive="router-link-active" >
+                       {{categoria.nombreCategoria}}
+                      </a>  
+                    </p>
+                  </div>
+                </ng-template>
+                
+              </div>
             </mat-menu>
           </li>
         </ul>

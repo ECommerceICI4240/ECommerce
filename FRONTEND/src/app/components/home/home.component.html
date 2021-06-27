@@ -1,34 +1,32 @@
-<!--Se listan todos los productos
-<div class="col-lg-6 col-md-2" *ngFor="let producto of productos">
-  <div class="card text-center">
-    <div class="card-header bg-dark text-white d-flex justity-content-between align-items-center">
-      <button class="btn btn-danger" id="deleteProd">
-        <i class="far fa-trash-alt"></i>
-      </button>
-      {{producto.nombreProducto}}
-    </div>
-    <div class="card-body">
-      <p id="preciosProd">${{producto.precioProducto}}</p>
-    </div>
-  </div>
-</div>
--->
 
+
+<!--Se listan los productos mejor calificados-->
 <div class="container">
+  <h2 class="bs-title mt-5 mb-5 text-center">
+    <strong>MEJOR CALIFICADOS</strong>
+  </h2>
   <div class="row">
-    <div class="col-lg-6 col-md-4" *ngFor="let producto of productos">
+    <div class="col-lg-4 col-md-4" style="margin-bottom: 2%;" *ngFor="let producto of productos">
       <div class="card text-center">
+        
         <div class="card-header bg-dark text-white d-flex justity-content-between align-items-center">
-          <button class="btn btn-danger" id="deleteProd">
-            <i class="far fa-trash-alt"></i>
-          </button>
           {{producto.nombreProducto}}
         </div>
-      </div>
-      <img [src]=producto.imagenProducto class="card-img-top" id="imagenProd" />
-      <div class="card-body">
+        <a [routerLink]="['/producto/{{producto.idProducto}}']" routerLinkActive="router-link-active" >
+          <img [src]=producto.imagenProducto class="card-img-top" id="imagenProd" />
+        </a>
+        
+        
         <div class="card-body">
-          <p id="preciosProd">${{producto.precioProducto}}</p>
+          <div class="card-body">
+            <p id="preciosProd">${{producto.precioProducto}}</p>
+          </div>
+          <a [routerLink]="['/Carrito']" routerLinkActive="router-link-active" >
+            <button class="btn btn-danger" id="deleteProd">
+              Agregar al carrito
+            </button>
+          </a>
+          
         </div>
       </div>
     </div>

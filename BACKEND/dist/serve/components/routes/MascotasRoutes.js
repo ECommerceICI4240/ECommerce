@@ -9,6 +9,7 @@ class MascotaRouter {
     }
     config() {
         this.router.get('/', mascotas_controller_1.mascotaController.getAllMascotas);
+        this.router.get('/:idMascota/:idCategoria', mascotas_controller_1.mascotaController.getProdDeMascCatg);
     }
 }
 const mascotaRouter = new MascotaRouter();

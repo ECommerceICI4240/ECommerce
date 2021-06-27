@@ -12,27 +12,28 @@ export class HeaderComponent implements OnInit {
 
   constructor(private productosServices: ProductosService) { }
 
-  ngOnInit(): void {
-    this.productosServices.getProductos().subscribe(
-      res => {
-        this.mascotas = res;
-      },
-      err => console.error(err)
-    );
-
-    this.productosServices.getMascotas().subscribe(
-      res => {
-        this.mascotas = res;
-      },
-      err => console.error(err)
-    );
-
-    this.productosServices.getCategorias().subscribe(
-      res => {
-        this.categorias = res;
-      },
-      err => console.error(err)
-    );
+  async ngOnInit(): Promise<void> {
+    try{
+      //Busca las mascotas
+      await this.productosServices.getMascotas().subscribe(
+        res => {
+          this.mascotas = res;
+          //A cada mascota le obtiene su listado de categorias
+          for(let i = 0; i < this.mascotas.length;i++){
+            this.productosServices.getCategorias(this.mascotas[i].idMascota).subscribe(
+              res => {
+                //Se guarda cada categoria en un arreglo de arreglos
+                this.categorias[i] = res;
+              },
+              err => console.error(err)
+            );
+          }
+        },
+        err => console.error(err)
+      );
+    }catch(err){
+      console.log("Ocurrio un error en Header");
+    }
   }
 
 }

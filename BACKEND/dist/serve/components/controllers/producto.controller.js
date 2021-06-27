@@ -16,8 +16,8 @@ class ProductoController {
         //console.log(req.body);
         res.json({ text: 'creando producto' });
     }
-    getAllProductos(req, res) {
-        mysql_module_1.default.query('SELECT * FROM producto', (req1, resultados) => {
+    getProductosMejorCalificados(req, res) {
+        mysql_module_1.default.query('SELECT * FROM producto WHERE calificacionProducto = 5', (req1, resultados) => {
             res.status(200).send(resultados);
         });
     }

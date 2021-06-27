@@ -8,6 +8,7 @@ import regionRoutes from "../serve/components/routes/regionRoutes";
 import comunaRoutes from "./components/routes/ComunaRoutes";
 import mascotasRoutes from './components/routes/MascotasRoutes';
 import categoriaRoutes from './components/routes/categoriaRoutes';
+import carritoRoutes from './components/routes/carritoRoutes';
 
 function main(){
     const server: Express = express();
@@ -25,6 +26,7 @@ function main(){
     server.use('/comuna',comunaRoutes);
     server.use('/mascotas',mascotasRoutes);
     server.use('/categoria',categoriaRoutes);
+    server.use('/carrito',carritoRoutes);
 
     server.listen(port, ()=>{
         console.log('Server listening on: http://localhost:' + port)

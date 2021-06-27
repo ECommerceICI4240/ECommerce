@@ -8,7 +8,7 @@ class ProductoRouter {
         this.config();
     }
     config() {
-        this.router.get('/', producto_controller_1.productoController.getAllProductos);
+        this.router.get('/', producto_controller_1.productoController.getProductosMejorCalificados);
         this.router.get('/:id', producto_controller_1.productoController.getProductoById);
         this.router.post('/', producto_controller_1.productoController.createProducto);
     }

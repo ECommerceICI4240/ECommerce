@@ -9,7 +9,11 @@ class CategoriaRouter{
     }
 
     config(): void{
+
         this.router.get('/',categoriaController.getAllCategorias);
+
+        //Obtiene las categorias relacionada a una mascota
+        this.router.get('/:idMascota',categoriaController.getCategoriaMascota);
     }
 }
 

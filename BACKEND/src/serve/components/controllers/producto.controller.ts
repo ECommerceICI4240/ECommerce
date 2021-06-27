@@ -17,8 +17,8 @@ class ProductoController{
         res.json({text:'creando producto'});
     }
 
-    public getAllProductos(req: Request, res: Response){
-        database.query('SELECT * FROM producto',(req1:any,  resultados:any)=>{
+    public getProductosMejorCalificados(req: Request, res: Response){
+        database.query('SELECT * FROM producto WHERE calificacionProducto = 5',(req1:any,  resultados:any)=>{
             res.status(200).send(resultados);
         });
     }

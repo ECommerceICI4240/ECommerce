@@ -42,11 +42,10 @@ export class ProductosService {
     return this.http.get(`${this.API_URI}/mascotas`);
   }
 
-
-
-  getCategorias(){
-    return this.http.get(`${this.API_URI}/categoria`);
-  }  
+  //Obtiene las categorias relacionadas a un mascota
+  getCategorias(idMascota:number){
+    return this.http.get(`${this.API_URI}/categoria/${idMascota}`);
+  }
 
 
   getRegiones(){
@@ -55,5 +54,15 @@ export class ProductosService {
 
   getComunasPorRegion(idRegion: number){
     return this.http.get(`${this.API_URI}/comuna/${idRegion}`);
+  }
+
+  //Se obtienen los productos que pertenecen pertenezcan a un categoria perteneciente a un tipo de mascota 
+  getProdDeMascCatg(idMascota: number, idCategoria:number){
+    return this.http.get(`${this.API_URI}/mascotas/${idMascota}/${idCategoria}`);
+  }
+
+  //Obtiene los productos que pertenecen a un usuario en particular
+  getProductosCarrito(idUsuario:number){
+    return this.http.get(`${this.API_URI}/carrito/${idUsuario}`);
   }
 }

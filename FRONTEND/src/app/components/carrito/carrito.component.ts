@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductosService } from '../../services/productos.service';
 
 @Component({
   selector: 'app-carrito',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./carrito.component.scss']
 })
 export class CarritoComponent implements OnInit {
+  productosCarrito: any = [];
 
-  constructor() { }
+  constructor(private productosServices: ProductosService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    //Falta ver lo del usuario
+    await this.productosServices.getProductosCarrito(1).subscribe(
+      res => {
+        this.productosCarrito = res;
+      },
+      err => console.error(err)
+    );
   }
-
 }

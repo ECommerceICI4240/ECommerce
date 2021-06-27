@@ -28,6 +28,8 @@ import {MatIconModule} from '@angular/material/icon';
 //Boostrap
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarritoComponent } from './components/carrito/carrito.component';
+import { ProductosComponent } from './components/productos/productos.component';
+import { InfoproductoComponent } from './components/infoproducto/infoproducto.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { CarritoComponent } from './components/carrito/carrito.component';
     HomeComponent,
     IniciarsesionComponent,
     RegistrarseComponent,
-    CarritoComponent
+    CarritoComponent,
+    ProductosComponent,
+    InfoproductoComponent
   ],
   imports: [
     BrowserModule,

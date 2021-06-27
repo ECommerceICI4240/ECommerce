@@ -10,6 +10,7 @@ class MascotaRouter{
 
     config(): void{
         this.router.get('/',mascotaController.getAllMascotas);
+        this.router.get('/:idMascota/:idCategoria',mascotaController.getProdDeMascCatg);
     }
 }
 

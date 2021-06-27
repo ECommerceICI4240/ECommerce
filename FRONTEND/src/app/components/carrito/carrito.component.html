@@ -1,60 +1,92 @@
 <section class="shopping-cart dark">
     <div class="container">
         <div class="block-heading">
+            <!--Descripcion del carrito-->
             <h2>Carrito de compras</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis
                 vitae leo.</p>
         </div>
         <div class="wrapper fadeInDown">
-        <div class="content">
-            <div class="row">
-                <div class="col-md-12 col-lg-8">
-                    <div class="items">
-                        <!-- Producto 1-->
-                        <div class="product">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img class="img-fluid mx-auto d-block image" src="https://i.pinimg.com/originals/22/60/b4/2260b463e2591adee70316d1059955d6.png">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="info">
-                                        <div class="row">
-                                            <div class="col-md-5 product-name">
-                                                <div class="product-name">
-                                                    <a href="#">Lorem Ipsum dolor</a>
-                                                    <div class="product-info">
-                                                        <div>Descripción: <span class="value">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="items">
+                            <!-- Listado de Productos -->
+                            <div class="product" *ngFor="let productoCarrito of productosCarrito">
+                                <div class="row">
+
+                                    <!--Imagen--> 
+                                    <div class="col-md-3">
+                                        <img class="img-fluid mx-auto d-block image" [src]=productoCarrito.imagenProducto>
+                                    </div>
+                                    <!--Imagen--> 
+                                   
+                                    <div class="col-md-8">
+                                        <div class="info">
+                                            <div class="row">
+
+                                                <!--Descripcion-->
+                                                <div class="col-md-5 product-name">
+                                                    <div class="product-name">
+                                                        <!--Nombre producto-->
+                                                        <a [routerLink]="['/producto/{{productoCarrito.idProducto}}']" routerLinkActive="router-link-active" >{{productoCarrito.nombreProducto}}</a>
+                                                        <div class="product-info">
+                                                            <div>Descripción: <span class="value">{{productoCarrito.descripcionProducto}}</span></div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-4 quantity">
-                                                <label for="quantity">Quantity:</label>
-                                                <input id="quantity" type="number" value="3"
-                                                    class="form-control quantity-input">
-                                            </div>
-                                            <div class="col-md-3 price">
-                                                <span>$120</span>
+                                                <!--Descripcion-->
+
+                                                <!--Modificar cantidad-->
+                                                <div class="col-md-4 quantity">
+                                                    <label for="quantity">Cantidad:</label>
+                                                    <input id="quantity" type="number" value="3"
+                                                        class="form-control quantity-input">
+                                                </div>
+                                                <!--Modificar cantidad-->
+
+                                                <!--Precio-->
+                                                <div class="col-md-3 price">
+                                                    <span>${{productoCarrito.precioProducto}}</span>
+                                                </div>
+                                                <!--Precio-->
+
+                                                <!--Eliminar-->
+                                                <div class="col-md-2">
+                                                    <button class="btn btn-danger" id="deleteProd">
+                                                        <i class="far fa-trash-alt"></i>
+                                                    </button>
+                                                </div>              
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- Listado de Productos -->    
                         </div>
-                        <!-- Producto 1-->    
                     </div>
-                </div>
-                <div class="col-md-12 col-lg-4">
-                    <div class="summary">
-                        <h3>Checkout</h3>
-                        <div class="summary-item"><span class="text">Subtotal</span><span class="price">$360</span></div>
-                        <div class="summary-item"><span class="text">Total</span><span class="price">$360</span></div>
-                        <button type="button" class="btn btn-primary btn-lg btn-block">Comprar</button>
+
+                    <!--Seccion de calculo-->
+                    <div class="col-md-12 col-lg-4">
+                        <div class="summary">
+                            <h3>Checkout</h3>
+                            <div class="summary-item"><span class="text">Subtotal</span><span class="price">$360</span></div>
+                            <div class="summary-item"><span class="text">Total</span><span class="price">$360</span></div>
+                            <button type="button" class="btn btn-primary btn-lg btn-block">Comprar</button>
+                        </div>
                     </div>
+                    <!--Seccion de calculo-->
+
                 </div>
+
+                <!--Boton que redirije a la pagina principal-->
+                <a [routerLink]="['/home']" routerLinkActive="router-link-active" >
+                    <button type="button" class="btn btn-primary btn-lg btn-block">
+                        Cerrar
+                    </button>
+                </a>
+                
             </div>
         </div>
-    </div>
     </div>
 </section>

@@ -11,6 +11,7 @@ const regionRoutes_1 = __importDefault(require("../serve/components/routes/regio
 const ComunaRoutes_1 = __importDefault(require("./components/routes/ComunaRoutes"));
 const MascotasRoutes_1 = __importDefault(require("./components/routes/MascotasRoutes"));
 const categoriaRoutes_1 = __importDefault(require("./components/routes/categoriaRoutes"));
+const carritoRoutes_1 = __importDefault(require("./components/routes/carritoRoutes"));
 function main() {
     const server = express_1.default();
     const port = 4000;
@@ -24,6 +25,7 @@ function main() {
     server.use('/comuna', ComunaRoutes_1.default);
     server.use('/mascotas', MascotasRoutes_1.default);
     server.use('/categoria', categoriaRoutes_1.default);
+    server.use('/carrito', carritoRoutes_1.default);
     server.listen(port, () => {
         console.log('Server listening on: http://localhost:' + port);
     });
