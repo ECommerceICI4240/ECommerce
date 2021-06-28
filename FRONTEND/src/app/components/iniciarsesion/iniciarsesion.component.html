@@ -1,21 +1,23 @@
 <div class="wrapper fadeInDown">
   <div id="formContent">
-
     <div class="fadeIn first">
       <img src="https://i.kym-cdn.com/photos/images/newsfeed/002/055/151/167.jpg" id="icon" alt="User Icon" />
       <h1>E-Commerce</h1>
     </div>
-
     {{mensaje}}
-    <form [formGroup]="formularioIniciarSesion" (ngSubmit)="ValidarInicioDeSesion()">
+    <form [formGroup]="formularioIniciarSesion" (ngSubmit)="ValidarInicioDeSesion()" id="formatoForm">
       <input formControlName="correo" type="email" id="login" class="fadeIn second" name="login" placeholder="Correo Electrónico">
-      <input formControlName="contrasena" type="text" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
-      
+      <br> <br>
+      <input formControlName="contrasena" type="password" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
+      <br> <br>
      <!-- <input type="submit" class="fadeIn fourth" value="Iniciar Sesión">-->
 
       <button type="submit" [disabled]="formularioIniciarSesion.invalid" class="fadeIn fourth" value="Iniciar Sesión">
-          Iniciar Sesion
+          Iniciar Sesión
       </button>
+      <br> <br>
+      <input type="checkbox"> Recordar Contraseña (Aun falta hacerlo)
+      <br> <br>
     </form>
     
     <!--

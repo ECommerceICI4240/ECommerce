@@ -24,6 +24,7 @@ import { RegistrarseComponent } from './components/registrarse/registrarse.compo
 import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatTabsModule} from '@angular/material/tabs';
 
 //Boostrap
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -57,7 +58,8 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTabsModule
   ],
   providers: [
     ProductosService

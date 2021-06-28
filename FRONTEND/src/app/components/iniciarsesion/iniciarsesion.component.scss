@@ -64,6 +64,7 @@ html {
     text-align: center;
     -webkit-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
+    font-size: 20px;
   }
   
   
@@ -263,4 +264,19 @@ html {
   
   #icon {
     width:30%;
+  }
+
+  #formatoForm
+  {
+    font-size: 25px;
+  }
+
+  input[type="checkbox"]{
+    width: 20px; 
+    height: 20px; 
+  }
+
+  button
+  {
+    height: 40px;
   }

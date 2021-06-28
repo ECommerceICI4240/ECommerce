@@ -90,7 +90,7 @@ export class RegistrarseComponent implements OnInit
       if (this.formulario.invalid) {
           return;
       }
-      alert('Usuario Creado Satisfactoriamente! (Mentira)'+JSON.stringify(this.formulario.value))
+      alert('Usuario Creado Satisfactoriamente!'+JSON.stringify(this.formulario.value))
     }
 
     MustMatch(controlName: string, matchingControlName: string) 

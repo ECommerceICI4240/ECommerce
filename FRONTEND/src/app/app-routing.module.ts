@@ -19,7 +19,8 @@ const routes: Routes = [
   {path: 'mascotas/:idMascota/:idCategoria', component:ProductosComponent},
   {path: 'producto/:idProducto',component:InfoproductoComponent},
   {path: 'usuario', component:UsuarioComponent},
-  {path: 'admin', component:AdminComponent}
+  {path: 'admin', component:AdminComponent},
+  {path: 'infoproducto', component:InfoproductoComponent}
 ];
 
 @NgModule({

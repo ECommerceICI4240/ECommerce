@@ -1,1 +1,62 @@
-<p>infoproducto works!</p>
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="wrapper row">
+                <div class="preview col-md-6">
+                    <!--Imagen del Producto-->
+                    <div class="preview-pic tab-content">
+                        <div class="tab-pane active" id="pic-1"><img src="http://placekitten.com/400/252" /></div>
+                    </div>
+                </div>
+                <div class="details col-md-6">
+                    <!--Nombre del Producto-->
+                    <h3 class="product-title">Nombre del Producto</h3>
+                    <div class="rating">
+                        <!--Estrellas del Producto-->
+                        <ngb-rating [max]="5" [(rate)]="currentRating" [readonly]="false"></ngb-rating> <br>
+                        <!--Número de Valoraciones-->
+                        <span class="review-no">X Valoraciones</span>
+                    </div>
+                    <!--Descripción del Prodcuto-->
+                    <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <!--Precio del Producto-->
+                    <h4 class="price">Precio: <span>Valor</span></h4>
+                    <div class="action">
+                        <!--Botón añadir Producto-->
+                        <button class="add-to-cart btn btn-default" type="button">Añadir al Carrito</button>
+                    </div>
+                    <br><br>
+                    <!--Número de comentarios-->
+                    <h2> Commentarios |X| </h2>
+                    <div class="row" id="addcomment">
+                        <form>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="3"  maxlength="150" placeholder="Ingrese su comentario.."></textarea> <br>
+                            </div>
+                            <!--Se envia comentario-->
+                            <div class="form-group">
+                                <button class="btn btn-dark">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <hr>
+                    <div class="row comment">
+                        <div class="head">
+                            <small><strong class='user'>Nombre de Usuario</strong></small>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non lorem elementum, accumsan
+                            magna sed, faucibus mauris. Nulla pellentesque ante nibh, ac hendrerit ante fermentum sed.
+                            Nunc in libero dictum, porta nibh pellentesque, ultrices dolor. Curabitur nunc ipsum,
+                            blandit vel aliquam id, aliquam vel velit. Vestibulum ante ipsum primis in faucibus orci
+                            luctus et ultrices posuere cubilia Curae; Sed sit amet mi dignissim, pretium justo non,
+                            lacinia libero. Nulla facilisi. Donec id sem velit. </p>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+</div>
