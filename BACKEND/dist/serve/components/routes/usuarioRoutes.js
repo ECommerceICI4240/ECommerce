@@ -8,9 +8,10 @@ class UsuarioRouter {
         this.config();
     }
     config() {
-        this.router.get('/:id', usuario_controller_1.usuarioController.getUsuarioById);
-        this.router.get('/', usuario_controller_1.usuarioController.getAllUsuarios);
-        this.router.post('/', usuario_controller_1.usuarioController.createUsuario);
+        //Iniciar sesion de un ususario independiente de que tipo sea (comun o admin)
+        this.router.get('/iniciarSesion', usuario_controller_1.usuarioController.iniciarSesion);
+        //Crea una cuenta para un usuario
+        this.router.post('/registrarse', usuario_controller_1.usuarioController.createUsuario);
     }
 }
 const usuarioRouter = new UsuarioRouter();

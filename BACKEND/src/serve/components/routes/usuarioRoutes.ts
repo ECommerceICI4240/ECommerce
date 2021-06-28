@@ -1,4 +1,4 @@
-import {Response, Router} from "express";
+import {Router} from "express";
 import {usuarioController} from '../controllers/usuario.controller';
 
 class UsuarioRouter{
@@ -9,10 +9,12 @@ class UsuarioRouter{
     }
 
     config(): void{
-        this.router.get('/:id',usuarioController.getUsuarioById);
-        this.router.get('/',usuarioController.getAllUsuarios);
         
-        this.router.post('/',usuarioController.createUsuario);
+        //Iniciar sesion de un ususario independiente de que tipo sea (comun o admin)
+        this.router.get('/iniciarSesion',usuarioController.iniciarSesion);
+
+        //Crea una cuenta para un usuario
+        this.router.post('/registrarse',usuarioController.createUsuario);
     }
 }
 

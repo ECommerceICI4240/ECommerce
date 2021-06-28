@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 //Interfaces con la estructura 
 import {Usuario} from '../models/usuarios';
-import { Region } from '../models/region';
+import { Observable } from 'rxjs';
 
 
 //Para hace peticiones
@@ -64,5 +64,10 @@ export class ProductosService {
   //Obtiene los productos que pertenecen a un usuario en particular
   getProductosCarrito(idUsuario:number){
     return this.http.get(`${this.API_URI}/carrito/${idUsuario}`);
+  }
+
+   //Valida que los campos ingresados sean correctos
+   ValidarInicioDeSesion(correo:string,contrasena:string): Observable<any>{
+    return this.http.get(`${this.API_URI}/usuario/iniciarSesion?correo=${correo}&contrasena=${contrasena}`);
   }
 }

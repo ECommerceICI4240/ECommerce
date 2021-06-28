@@ -30,6 +30,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { InfoproductoComponent } from './components/infoproducto/infoproducto.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { InfoproductoComponent } from './components/infoproducto/infoproducto.co
     RegistrarseComponent,
     CarritoComponent,
     ProductosComponent,
-    InfoproductoComponent
+    InfoproductoComponent,
+    AdminComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,

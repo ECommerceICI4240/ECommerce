@@ -6,11 +6,24 @@
       <h1>E-Commerce</h1>
     </div>
 
+    {{mensaje}}
+    <form [formGroup]="formularioIniciarSesion" (ngSubmit)="ValidarInicioDeSesion()">
+      <input formControlName="correo" type="email" id="login" class="fadeIn second" name="login" placeholder="Correo Electrónico">
+      <input formControlName="contrasena" type="text" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
+      
+     <!-- <input type="submit" class="fadeIn fourth" value="Iniciar Sesión">-->
+
+      <button type="submit" [disabled]="formularioIniciarSesion.invalid" class="fadeIn fourth" value="Iniciar Sesión">
+          Iniciar Sesion
+      </button>
+    </form>
+    
+    <!--
     <form>
       <input type="text" id="login" class="fadeIn second" name="login" placeholder="Correo Electrónico">
       <input type="text" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
       <input type="submit" class="fadeIn fourth" value="Iniciar Sesión">
-    </form>
+    </form>-->
 
     <div id="formFooter">
       <a href="#" class="ForgetPwd">Olvidaste tu contraseña?</a>

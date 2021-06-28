@@ -6,6 +6,8 @@ import { IniciarsesionComponent } from './components/iniciarsesion/iniciarsesion
 import {CarritoComponent} from './components/carrito/carrito.component';
 import {ProductosComponent} from './components/productos/productos.component';
 import {InfoproductoComponent} from './components/infoproducto/infoproducto.component';
+import {UsuarioComponent} from './components/usuario/usuario.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'}, //Para definir que por defecto se redireccione a home
@@ -15,7 +17,9 @@ const routes: Routes = [
   {path: 'IniciarSesion',component:IniciarsesionComponent },
   {path: 'Carrito',component:CarritoComponent },
   {path: 'mascotas/:idMascota/:idCategoria', component:ProductosComponent},
-  {path: 'producto/:idProducto',component:InfoproductoComponent}
+  {path: 'producto/:idProducto',component:InfoproductoComponent},
+  {path: 'usuario', component:UsuarioComponent},
+  {path: 'admin', component:AdminComponent}
 ];
 
 @NgModule({

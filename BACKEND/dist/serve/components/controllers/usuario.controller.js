@@ -15,44 +15,46 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.usuarioController = void 0;
 const mysql_module_1 = __importDefault(require("../../config/mysql.module"));
 class UsuarioController {
-    createRegion(req, res) {
-        let nombreRegion = req.body.nombreRegion;
-        mysql_module_1.default.query("INSERT INTO region(nombreRegion) VALUES ('" + nombreRegion + "')", (req1, resultado) => {
-            res.status(201).send("Region ingresada");
-        });
-    }
-    getUsuarioById(req, res) {
+    iniciarSesion(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            mysql_module_1.default.query();
-            res.send('hello');
+            let _correoUsuario = req.query.correo; //El correo es unico
+            let _contrasena = req.query.contrasena;
+            console.log("hola");
+            console.log(_correoUsuario);
+            console.log(_contrasena);
+            try {
+                yield mysql_module_1.default.query('SELECT nombres,correo,rolUsuario,rut FROM usuario WHERE correo=? and contrasena=md5(?)', [_correoUsuario, _contrasena], (req1, resultado) => {
+                    console.log(resultado);
+                    res.send(resultado);
+                });
+            }
+            catch (err) {
+                return res.status(404).json({ message: 'correo o contrasena incorrectos' });
+            }
         });
     }
-    getAllUsuarios(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            mysql_module_1.default.query('SELECT * FROM usuario', (req1, resultados) => {
-                res.status(200).send(resultados);
-            });
-        });
-    }
+    //Se crea un usuario, por defecto es el crear usuario con rol de usuario comun
     createUsuario(req, res) {
-        let _nombres = req.body['nombres'];
-        let _correo = req.body.correo;
-        let _contrasena = req.body.contrasena;
-        let _apellidoP = req.body.apellidoP;
-        let _apellidoM = req.body.apellidoM;
-        let _rut = req.body.rut;
-        let _direccion = req.body.direccion;
-        let _idComuna = req.body.idComuna;
-        /*let nombre = req.body.nombre;
-        let correoelectronico=req.body.correoelectronico;
-        let clave=req.body.clave;
-
-        Nombre de los atributos en la base de datos de la tabla usuario*/
-        /*await database.query("INSERT INTO usuario(nombres, correo, contrasena,apellidoP,apellidoM,rut,direccion,idComuna) VALUES('''+_nombres+''','''+_correo+'''+_contrasena+'''+_apellidoP+'''+_apellidoM+'''+_rut +'''+_direccion+'''+_idComuna+''')",(req1:any, resultados:any)=>{
-            res.status(201).send("Usuario creado");
-            console.log("Los resultados son"+resultados);
-        });*/
-        //database.query('INSERT INTO usuario (nombres)VALUES ()');
+        return __awaiter(this, void 0, void 0, function* () {
+            let _nombres = req.body.nombres;
+            let _correo = req.body.correo;
+            //Se encripta la contraseña
+            let _contrasena = req.body.contrasena;
+            let _apellidoP = req.body.apellidoP;
+            let _apellidoM = req.body.apellidoM;
+            let _rut = req.body.rut;
+            let _direccion = req.body.direccion;
+            let _idComuna = req.body.idComuna;
+            let rol = 0; //El numero 0 indica un usuario comun
+            try {
+                yield mysql_module_1.default.query("INSERT INTO usuario(nombres, correo, contrasena,apellidoP,apellidoM,rut,direccion,idComuna,rolUsuario) VALUES('" + _nombres + "','" + _correo + "',md5('" + _contrasena + "'),'" + _apellidoP + "','" + _apellidoM + "','" + _rut + "','" + _direccion + "'," + _idComuna + "," + rol + ")", (req1, resultados) => {
+                    res.status(201).send("Usuario creado");
+                });
+            }
+            catch (err) {
+                return res.status(404).json({ message: 'problema al crear el ususario' });
+            }
+        });
     }
 }
 exports.usuarioController = new UsuarioController();
