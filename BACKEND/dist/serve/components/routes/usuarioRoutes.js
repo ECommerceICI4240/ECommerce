@@ -12,6 +12,10 @@ class UsuarioRouter {
         this.router.get('/iniciarSesion', usuario_controller_1.usuarioController.iniciarSesion);
         //Crea una cuenta para un usuario
         this.router.post('/registrarse', usuario_controller_1.usuarioController.createUsuario);
+        //Se obtiene la información de un usuario según su rut
+        this.router.get('/:rutUsuario', usuario_controller_1.usuarioController.getUsuarioByRut);
+        //Obtiene el listado de todos los usuarios
+        this.router.get('/', usuario_controller_1.usuarioController.getAllUsuarios);
     }
 }
 const usuarioRouter = new UsuarioRouter();

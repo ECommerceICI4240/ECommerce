@@ -36,4 +36,42 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  sesionIniciada():boolean{
+    let datosComun = JSON.parse(localStorage.getItem("sitioPrivadoECommerce") || '{"correo":null}');
+    let datosAdmin = JSON.parse(localStorage.getItem('sitioPrivadoAdminECommerce') || '{"correo":null}');
+
+    if(datosComun && datosComun.correo){
+      return true;
+    }
+    else if(datosAdmin && datosAdmin.correo){
+      return true;
+    }
+
+    return false;
+  }
+
+  sesionComun():boolean{
+    let datosComun = JSON.parse(localStorage.getItem("sitioPrivadoECommerce") || '{"correo":null}');
+
+    if(datosComun && datosComun.correo){
+      return true;
+    }
+   
+    return false;
+  }
+
+  /*Se eliminar el localStorage para cerrar la sesion*/
+  cerrarSesion(){
+    let datosComun = JSON.parse(localStorage.getItem("sitioPrivadoECommerce") || '{"correo":null}');
+    let datosAdmin = JSON.parse(localStorage.getItem('sitioPrivadoAdminECommerce') || '{"correo":null}');
+
+    if(datosComun && datosComun.correo){
+      localStorage.removeItem('sitioPrivadoECommerce');
+    }
+    else if(datosAdmin && datosAdmin.correo){
+      localStorage.removeItem('sitioPrivadoAdminECommerce');
+    
+    }
+  }
+
 }

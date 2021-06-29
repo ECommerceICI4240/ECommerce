@@ -46,7 +46,7 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
     ProductosComponent,
     InfoproductoComponent,
     AdminComponent,
-    UsuarioComponent
+    UsuarioComponent,
   ],
   imports: [
     BrowserModule,

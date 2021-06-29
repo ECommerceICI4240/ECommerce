@@ -4,6 +4,7 @@
         <div class="col-md-6">
             <h1>Herramientas de Administrador</h1>
         </div>
+        
     </div>
     <div class="row">
         <div class="col-sm-12">
@@ -19,12 +20,12 @@
                                                 <th>NOMBRES</th>
                                                 <th>APELLIDO PATERNO</th>
                                                 <th>APELLIDO MATERNO</th>
-                                                <th>RUT</th>
+                                                <th>RUT USUARIO</th>
                                                 <th>DIRECCION</th>
                                                 <th>CORREO</th>
                                             </tr>
                                         </thead>
-                                        <!-- (Si se hace la conexión con la base de datos debería funcar)
+                                        
                                     <tr *ngFor="let usuario of usuarios">
                                         <td> {{ usuario.nombres     }} </td>
                                         <td> {{ usuario.apellidoP   }} </td>
@@ -33,7 +34,7 @@
                                         <td> {{ usuario.direccion   }} </td>
                                         <td> {{ usuario.correo      }} </td>
                                       </tr>
-                                      -->
+                                      
                                     </table>
                                     <hr>
                                 </div>
@@ -47,25 +48,27 @@
                             <div class="form-group">
                                 <div align="center">
                                     <table class="table table-responsive">
+                                
                                         <thead class="thead-dark">
                                             <tr>
-                                                <th>RUT</th>
-                                                <th>NOMBRE PRODUCTO</th>
-                                                <th>CANTIDAD</th>
-                                                <th>PRECIO</th>
+                                                <th>RUT USUARIO</th>
+                                                <th>CODIGO DE ORDEN</th>
+                                                <th>TOTAL A PAGAR</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
 
-                                        <!--Faltaría crear otra tabla en la base de datos para las compras-->
-                                        <tr *ngFor="let producto of productos">
-                                            <td> {{ producto.nombreProducto }} </td>
-                                            <td> {{ producto.nombreProducto }} </td>
-                                            <td> {{ producto.stockProducto }} </td>
-                                            <td> {{ producto.precioProducto }} </td>
-                                            <td> <button class="btn btn-danger"> X </button> </td>
+                                        
+                                       
+                                        <tr *ngFor="let pedido of pedidos">
+                                            <td> {{ pedido.rutUsuario }} </td>
+                                            <td> {{ pedido.idOrden }} </td>
+                                            <td> {{ pedido.totalApagar }} </td>
+                                            <td> <button class="btn btn-danger" (click)="vermas(pedido.idOrden)"> VER MAS </button> </td>
                                         </tr>
                                     </table>
+                                   
+
                                     <hr>
                                 </div>
                             </div>
@@ -73,4 +76,48 @@
                     </div>
                 </mat-tab>
             </mat-tab-group>
+</div>
+
+
+<div *ngIf="seleccionar() == true">
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <div class="fadeIn first">
+                <h1>Información sobre los productos de la orden</h1>
+            </div>
+          
+            <div>
+                <div align="center">
+                    <table class="table table-responsive">
+                
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>NOMBRE PRODUCTO</th>
+                                <th>CODIGO</th>
+                                <th>CANTIDAD</th>
+                                <th>PRECIO UNITARIO</th>
+                            </tr>
+                        </thead>
+
+                        <tr *ngFor="let listadoInfoProducto of listadoInfoProductos">
+
+                            <td> {{listadoInfoProducto.nombreProducto[0].nombreProducto}} </td>
+                            <td> {{listadoInfoProducto.idProducto }} </td>
+                            <td> {{listadoInfoProducto.cantidad }} </td>
+                            <td> {{listadoInfoProducto.precioProducto}}</td>
+                        </tr>
+                    </table>
+                    
+
+                    <hr>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-danger" (click)="cerrrarVermas()"> CERRAR </button>
+            </div>
+      
         </div>
+    </div>
+<div>
+
+        

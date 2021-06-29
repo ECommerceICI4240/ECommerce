@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup,Validators,FormBuilder} from '@angular/forms'
 
 import { ProductosService } from '../../services/productos.service';
-import { Region } from 'src/app/models/region';
-import { Comuna } from 'src/app/models/comuna';
 
 @Component({
   selector: 'app-registrarse',

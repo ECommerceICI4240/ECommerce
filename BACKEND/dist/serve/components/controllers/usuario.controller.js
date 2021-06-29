@@ -19,12 +19,8 @@ class UsuarioController {
         return __awaiter(this, void 0, void 0, function* () {
             let _correoUsuario = req.query.correo; //El correo es unico
             let _contrasena = req.query.contrasena;
-            console.log("hola");
-            console.log(_correoUsuario);
-            console.log(_contrasena);
             try {
                 yield mysql_module_1.default.query('SELECT nombres,correo,rolUsuario,rut FROM usuario WHERE correo=? and contrasena=md5(?)', [_correoUsuario, _contrasena], (req1, resultado) => {
-                    console.log(resultado);
                     res.send(resultado);
                 });
             }
@@ -53,6 +49,41 @@ class UsuarioController {
             }
             catch (err) {
                 return res.status(404).json({ message: 'problema al crear el ususario' });
+            }
+        });
+    }
+    /*Obtiene un usuario segun su rut
+    SE NECESITA
+    - rut del usuario*/
+    getUsuarioByRut(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let _rutUsuario = req.params.rutUsuario;
+            try {
+                mysql_module_1.default.query('SELECT nombres, apellidoM , apellidoP , direccion , idComuna , rut FROM usuario WHERE usuario.rut= ?', _rutUsuario, (req1, resultados) => {
+                    res.status(200).send(resultados);
+                });
+            }
+            catch (err) {
+                return res.status(404).json({ message: 'problemas al obtener el ususario' });
+            }
+        });
+    }
+    /*Obtiene todos los ususario
+    NO SE NECESITAN DATOS ESPECIFICOS*/
+    getAllUsuarios(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                mysql_module_1.default.query('SELECT nombres, apellidoM , apellidoP , direccion , idComuna , rut , correo FROM usuario ', (req1, resultados) => {
+                    if (resultados.length > 0) {
+                        res.status(200).send(resultados);
+                    }
+                    else {
+                        res.status(404).json({ message: 'No hay resultados' });
+                    }
+                });
+            }
+            catch (err) {
+                return res.status(404).json({ message: 'problemas en obtener los ususarios' });
             }
         });
     }

@@ -9,7 +9,7 @@ import comunaRoutes from "./components/routes/ComunaRoutes";
 import mascotasRoutes from './components/routes/MascotasRoutes';
 import categoriaRoutes from './components/routes/categoriaRoutes';
 import carritoRoutes from './components/routes/carritoRoutes';
-import adminRoutes from './components/routes/adminRoutes';
+import pedidoRoutes from "./components/routes/pedidoRoutes";
 
 function main(){
     const server: Express = express();
@@ -23,12 +23,13 @@ function main(){
 
     server.use('/producto',productoRoutes);
     server.use('/usuario',usuarioRoutes);
-    server.use('/admin',adminRoutes);
     server.use('/region',regionRoutes);
     server.use('/comuna',comunaRoutes);
     server.use('/mascotas',mascotasRoutes);
     server.use('/categoria',categoriaRoutes);
     server.use('/carrito',carritoRoutes);
+    server.use('/pedidos',pedidoRoutes);
+    
 
     server.listen(port, ()=>{
         console.log('Server listening on: http://localhost:' + port)

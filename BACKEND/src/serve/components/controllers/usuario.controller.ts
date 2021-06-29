@@ -7,13 +7,11 @@ class UsuarioController{
     public async iniciarSesion(req: Request, res: Response){
         let _correoUsuario = req.query.correo; //El correo es unico
         let _contrasena = req.query.contrasena;
-        console.log("hola");
-        console.log(_correoUsuario);
-        console.log(_contrasena);
+       
         
         try{
             await database.query('SELECT nombres,correo,rolUsuario,rut FROM usuario WHERE correo=? and contrasena=md5(?)',[_correoUsuario,_contrasena],(req1:Request, resultado:Response)=>{ 
-                console.log(resultado);
+                
                 res.send(resultado);
             });
         }
@@ -46,6 +44,39 @@ class UsuarioController{
             return res.status(404).json({message: 'problema al crear el ususario'});
         }
         
+    }
+
+    /*Obtiene un usuario segun su rut
+    SE NECESITA
+    - rut del usuario*/
+    public async getUsuarioByRut(req: Request, res: Response){
+        let _rutUsuario = req.params.rutUsuario;
+        try{
+            database.query('SELECT nombres, apellidoM , apellidoP , direccion , idComuna , rut FROM usuario WHERE usuario.rut= ?',_rutUsuario,(req1:any, resultados:any)=>{
+                res.status(200).send(resultados);
+            });
+        }
+        catch(err){
+            return res.status(404).json({message: 'problemas al obtener el ususario'});
+        }
+    }
+
+    /*Obtiene todos los ususario
+    NO SE NECESITAN DATOS ESPECIFICOS*/
+    public async getAllUsuarios(req: Request, res: Response){
+        try{
+            database.query('SELECT nombres, apellidoM , apellidoP , direccion , idComuna , rut , correo FROM usuario ',(req1:any,  resultados:any)=>{
+                if( resultados.length > 0){
+                    res.status(200).send(resultados);
+                }
+                else{
+                    res.status(404).json({message: 'No hay resultados'});
+                }
+            }); 
+        }catch(err){
+            return res.status(404).json({message: 'problemas en obtener los ususarios'});
+        }
+          
     }
 }
 

@@ -19,12 +19,12 @@ export class ProductosService {
   constructor(private http: HttpClient) { }
 
   //Todos los productos
-  getProductos(){
+  getAllProductos(){
     return this.http.get(`${this.API_URI}/producto`);
   }
 
   //Un producto por id
-  getProducto(id: String){
+  getProducto(id: number){
     return this.http.get(`${this.API_URI}/producto/${id}`);
   }
 
@@ -62,12 +62,35 @@ export class ProductosService {
   }
 
   //Obtiene los productos que pertenecen a un usuario en particular
-  getProductosCarrito(idUsuario:number){
-    return this.http.get(`${this.API_URI}/carrito/${idUsuario}`);
+  getProductosCarrito(rutUsuario:string){
+    return this.http.get(`${this.API_URI}/carrito/${rutUsuario}`);
   }
 
    //Valida que los campos ingresados sean correctos
    ValidarInicioDeSesion(correo:string,contrasena:string): Observable<any>{
     return this.http.get(`${this.API_URI}/usuario/iniciarSesion?correo=${correo}&contrasena=${contrasena}`);
+  }
+
+  /*Obtiene el listado de todos los pedidos*/ 
+  getPedidos(){
+    return this.http.get(`${this.API_URI}/pedidos`);
+  }
+
+  /*Se obtienen todos los usuarios registrados*/
+  getAllUsuarios(){
+    return this.http.get(`${this.API_URI}/usuario`);
+  }
+
+  /*Se obtienen todos los pedidos de una orden */
+  getDetalleOrden(idOrden: number){
+    return this.http.get(`${this.API_URI}/pedidos/pedirOrdenDetalle/${idOrden}`);
+  }
+
+  getProductoCarrito(rutUsuario:String, idProducto: number){
+    return this.http.get(`${this.API_URI}/carrito/${rutUsuario}/${idProducto}`);
+  }
+
+  getTotal(rutUsuario: String){
+    return this.http.get(`${this.API_URI}/carrito/CalculoTotal/${rutUsuario}`);
   }
 }

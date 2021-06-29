@@ -12,7 +12,8 @@
                     <div class="col-md-12 col-lg-8">
                         <div class="items">
                             <!-- Listado de Productos -->
-                            <div class="product" *ngFor="let productoCarrito of productosCarrito">
+                            <div class="product" *ngFor="let productoCarritox of productosCarrito; let i = index">
+                                <div *ngFor="let productoCarrito of productoCarritox">
                                 <div class="row">
 
                                     <!--Imagen--> 
@@ -40,8 +41,9 @@
                                                 <!--Modificar cantidad-->
                                                 <div class="col-md-4 quantity">
                                                     <label for="quantity">Cantidad:</label>
-                                                    <input id="quantity" type="number" value="3"
+                                                    <input id="quantity" type="number" value="{{infoProductos[i].cantidad}}"
                                                         class="form-control quantity-input">
+                                                    
                                                 </div>
                                                 <!--Modificar cantidad-->
 
@@ -62,6 +64,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                             <!-- Listado de Productos -->    
                         </div>
                     </div>
@@ -70,8 +73,8 @@
                     <div class="col-md-12 col-lg-4">
                         <div class="summary">
                             <h3>Checkout</h3>
-                            <div class="summary-item"><span class="text">Subtotal</span><span class="price">$360</span></div>
-                            <div class="summary-item"><span class="text">Total</span><span class="price">$360</span></div>
+                            <div class="summary-item"><span class="text">Subtotal</span><span class="price">${{subTotal}}</span></div>
+                            <div class="summary-item"><span class="text">Total</span><span class="price">${{total}}</span></div>
                             <button type="button" class="btn btn-primary btn-lg btn-block">Comprar</button>
                         </div>
                     </div>

@@ -8,21 +8,75 @@ import { ProductosService } from '../../services/productos.service';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+  ordenDetalles:any = [];
+  usuarios: any = [];
+  pedidos: any = [];
+  seleccionado: boolean = false;
   productos: any = [];
-  
-  constructor(private productosServices: ProductosService) { }
 
-  ngOnInit(): void {
+  listadoInfoProductos : Producto[]; 
+  
+  
+  constructor(private productosServices: ProductosService) { 
+    this.listadoInfoProductos = [];
+  }
+
+  async ngOnInit(): Promise<void>{
      //Si no se ha iniciado sesion que se redireccione a la ruta inicial que es /home
-     let datos = JSON.parse(localStorage.getItem('sitioPrivadoAdminECommerce') || '{"correo":null}');
-     if(datos.correo == null){
-       window.location.href="/home";
-     }
-     this.productosServices.getProductos().subscribe(
+    let datos = JSON.parse(localStorage.getItem('sitioPrivadoAdminECommerce') || '{"correo":null}');
+      if(datos.correo == null){
+        window.location.href="/home";
+    }
+
+    this.productosServices.getAllUsuarios().subscribe(
       res => {
-        this.productos = res;
+        this.usuarios = res;
       },
       err => console.error(err)
     );
+
+   
+    try{
+      await this.productosServices.getPedidos().subscribe(
+        res =>{
+          this.pedidos = res;
+        },
+        err => console.error(err)
+      );
+    }
+    catch(err){
+      console.log("Ocurrio un error en admin mostrar pedidos");
+    }
+  }
+
+  async vermas(idOrden:number): Promise<void>{
+    this.listadoInfoProductos = [];
+    await this.productosServices.getDetalleOrden(idOrden).subscribe(
+      res =>{
+        this.ordenDetalles = res;
+        console.log(this.ordenDetalles);
+        
+        for(let i = 0; i < this.ordenDetalles.length; i++){
+          this.productosServices.getProducto(this.ordenDetalles[i].idProducto).subscribe(
+            res =>{
+              this.productos[i] = res;
+              this.listadoInfoProductos[i] = {idProducto: this.ordenDetalles[i].idProducto, precioProducto: this.ordenDetalles[i].precio, cantidad: this.ordenDetalles[i].cantidad, nombreProducto: this.productos[i]};
+              console.log(this.listadoInfoProductos[i]);
+            },
+            err => console.error(err)
+          );
+        }
+      },
+      err => console.error(err)
+    );
+    this.seleccionado = true;
+  }
+
+  cerrrarVermas(){
+    this.seleccionado = false;
+  }
+  
+  seleccionar(): boolean{
+    return this.seleccionado;
   }
 }

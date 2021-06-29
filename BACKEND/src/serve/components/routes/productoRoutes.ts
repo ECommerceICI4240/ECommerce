@@ -9,9 +9,13 @@ class ProductoRouter{
     }
 
     config(): void{
+        /*Se obtiene la informacion de un producto segun la id*/
+        this.router.get('/:idProducto',productoController.getProductoById);
+
+        /*Se obtiene un listado de los productos mejor calificados*/
         this.router.get('/',productoController.getProductosMejorCalificados);
-        this.router.get('/:id',productoController.getProductoById);
-        this.router.post('/',productoController.createProducto);
+
+      
     }
 }
 

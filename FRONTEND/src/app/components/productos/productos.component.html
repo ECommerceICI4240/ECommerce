@@ -5,7 +5,7 @@
     
   </div>
   <div class="row">
-    <div class="col-lg-4 col-md-4" style="margin-bottom: 2%;" *ngFor="let producto of productos">
+    <div class="col-lg-4 col-md-4" style="margin-bottom: 2%;" *ngFor="let producto of productos; let i = index">
       <div class="card text-center">
         <div class="card-header bg-dark text-white d-flex justity-content-between align-items-center">
           {{producto.nombreProducto}}
@@ -15,17 +15,23 @@
         </a>
         
         
-        <div class="card-body">
-          <div class="card-body">
-            <p id="preciosProd">${{producto.precioProducto}}</p>
+     
+
+          <!--Si no tiene una sesion iniciada no se pueden agregar productos al carrito-->
+          <div *ngIf="sesionIniciada() == true; else elseBlock">
+            <a [routerLink]="['/Carrito']" routerLinkActive="router-link-active" (click)="agregarAlCarrito(i)">
+              <button class="btn btn-danger" id="deleteProd">
+                Agregar al carrito
+              </button>
+            </a>
           </div>
-          <a [routerLink]="['/Carrito']" routerLinkActive="router-link-active" >
-            <button class="btn btn-danger" id="deleteProd">
-              Agregar al carrito
+          <ng-template #elseBlock>
+            <button class="btn btn-danger" id="deleteProd" disabled>
+              Agregar al carrito 
             </button>
-          </a>
+          </ng-template>  
           
-        </div>
+        
       </div>
     </div>
   </div>
