@@ -23,7 +23,7 @@ export class IniciarsesionComponent implements OnInit {
   ngOnInit(): void {
     let datosComun = JSON.parse(localStorage.getItem("sitioPrivadoECommerce") || '{}');
     if(datosComun && datosComun.correo){
-      window.location.href="/usuario";
+      window.location.href="/home";
     }
 
     let datosAdmin = JSON.parse(localStorage.getItem('sitioPrivadoAdminECommerce') || '{}');
